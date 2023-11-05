@@ -14,16 +14,17 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/examplemod/icon.png",
+  "icon": "assets/sdk_api/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.glasslauncher.sdkAPI.events.init.PlayerHandlerListener"
+      "net.glasslauncher.sdk_api.events.init.PlayerHandlerListener"
     ],
     "stationapi:event_bus_client": [
-      "net.glasslauncher.sdkAPI.events.init.KeyBindingListener",
-      "net.glasslauncher.sdkAPI.events.ingame.KeyPressedListener"
+      "net.glasslauncher.sdk_api.events.init.KeyBindingListener",
+      "net.glasslauncher.sdk_api.events.ingame.KeyPressedListener",
+      "net.glasslauncher.sdk_api.events.init.ItemCasingListener"
     ],
     "stationapi:event_bus_server": [
     ]
