@@ -19,18 +19,18 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.glasslauncher.sdk_api.events.init.PlayerHandlerListener"
+      "net.kozibrodka.sdk_api.events.init.PlayerHandlerListener"
     ],
     "stationapi:event_bus_client": [
-      "net.glasslauncher.sdk_api.events.init.KeyBindingListener",
-      "net.glasslauncher.sdk_api.events.ingame.KeyPressedListener",
-      "net.glasslauncher.sdk_api.events.init.ItemCasingListener"
+      "net.kozibrodka.sdk_api.events.init.KeyBindingListener",
+      "net.kozibrodka.sdk_api.events.ingame.KeyPressedListener",
+      "net.kozibrodka.sdk_api.events.init.ItemCasingListener"
     ],
     "stationapi:event_bus_server": [
     ]
   },
   "mixins": [
-    "examplemod.mixins.json"
+    "sdk_api.mixins.json"
   ],
 
   "depends": {
