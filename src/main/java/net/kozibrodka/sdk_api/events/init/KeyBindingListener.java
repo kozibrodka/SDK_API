@@ -30,9 +30,9 @@ public class KeyBindingListener {
 
         list.add(keyBinding_altinventory = new KeyBinding("SDK/WW2 Vehicle Inventory", Keyboard.KEY_I));
         list.add(keyBinding_altfire = new KeyBinding("SDK/WW2 Vehicle Fire", Keyboard.KEY_LCONTROL));
-        list.add(keyBinding_exit = new KeyBinding("SDK/WW2 Vehicle Exit", Keyboard.KEY_E));
+        list.add(keyBinding_exit = new KeyBinding("SDK/WW2 Vehicle Exit", Keyboard.KEY_X));
 
         list.add(keyBinding_bomb = new KeyBinding("WW2 Plane Bomb/Tank Shell", Keyboard.KEY_B));
-        list.add(keyBinding_rocket = new KeyBinding("WW2 Plane Rocket/Tank Special", Keyboard.KEY_P));
+        list.add(keyBinding_rocket = new KeyBinding("WW2 Plane Rocket/Tank Special", Keyboard.KEY_C));
     }
 }

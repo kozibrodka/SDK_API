@@ -272,7 +272,7 @@ public class mod_SdkGuns {
         ItemInstance itemstack = minecraft.player.inventory.getHeldItem();
         if(minecraft.options != null && minecraft.player != null && minecraft.player.inventory != null)
         {
-            if(itemstack == null || !SdkMap.scopedWeaponList.contains(itemstack.getType()) || minecraft.player.inventory.selectedHotbarSlot != lastZoomSlot || minecraft.options.thirdPerson || minecraft.currentScreen != null)
+            if(itemstack == null || !SdkMap.scopedList.contains(itemstack.getType()) || minecraft.player.inventory.selectedHotbarSlot != lastZoomSlot || minecraft.options.thirdPerson || minecraft.currentScreen != null)
             {
                 zoomEnabled = false;
             }
@@ -488,7 +488,7 @@ public class mod_SdkGuns {
                     int i1 = getNumberInFirstStackInInventory(minecraft.player.inventory, ((SdkItemGun)item).requiredBullet.id);
                     Tessellator tessellator = Tessellator.INSTANCE;
                     tessellator.start();
-                    if(SdkMap.oilWeaponList.contains(item))
+                    if(SdkMap.oilAmmoList.contains(item))
                     {
                         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, minecraft.textureManager.getTextureId("/assets/sdk_api/stationapi/textures/item/guiAmmoOil.png"));
                         for(int j1 = i1 - 1; j1 >= 0; j1--)
@@ -502,7 +502,7 @@ public class mod_SdkGuns {
                         }
 
                     } else
-                    if(SdkMap.redstoneWeaponList.contains(item))
+                    if(SdkMap.redAmmoList.contains(item))
                     {
                         GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, minecraft.textureManager.getTextureId("/assets/sdk_api/stationapi/textures/item/guiAmmoRedstone.png"));
                         for(int k1 = i1 - 1; k1 >= 0; k1--)
@@ -598,7 +598,7 @@ public class mod_SdkGuns {
 //                minecraft.openScreen(new GuiPlane(entityplayer.inventory, (EntityPlane)entityplayer.vehicle));
 //            }
             if(entityplayer.vehicle instanceof SdkVehicle){
-                ((SdkVehicle)entityplayer.vehicle).atvFire(entityplayer);
+                ((SdkVehicle)entityplayer.vehicle).inventoryAtvKey(minecraft, entityplayer);
             }
 
         } else
@@ -616,7 +616,7 @@ public class mod_SdkGuns {
 //                ((SdkEntityAtv)entityplayer.vehicle).fireGuns();
 //            }
             if(entityplayer.vehicle instanceof SdkVehicle){
-                ((SdkVehicle)entityplayer.vehicle).atvFire(entityplayer);
+                ((SdkVehicle)entityplayer.vehicle).altFireKey(entityplayer);
             }
         } else
         {

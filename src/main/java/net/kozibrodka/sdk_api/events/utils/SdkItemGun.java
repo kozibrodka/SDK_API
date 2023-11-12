@@ -121,7 +121,7 @@ public abstract class SdkItemGun extends SdkItemCustomUseDelay {
                     mod_SdkGuns.currentRecoilH += d1;
                     entity.pitch -= d;
                     entity.yaw += d1;
-                    if(i == 2 && !(SdkMap.noReloadWeaponList.contains(itemstack.getType())))
+                    if(i == 2 && !(SdkMap.noReloadList.contains(itemstack.getType())))
                     {
                         mod_SdkGuns.handleReload(world, (PlayerBase)entity, true);
                     }
@@ -130,7 +130,7 @@ public abstract class SdkItemGun extends SdkItemCustomUseDelay {
             }
             if(lastEmptySound == 0L || world.getLevelTime() - lastEmptySound > 20L)
             {
-                world.playSound(entity, "ofensywa:gunempty", 1.0F, 1.0F / (rand.nextFloat() * 0.1F + 0.95F));
+                world.playSound(entity, "sdk_api:gunempty", 1.0F, 1.0F / (rand.nextFloat() * 0.1F + 0.95F)); //TODO: można to REWRITE
                 lastEmptySound = world.getLevelTime();
             }
         }

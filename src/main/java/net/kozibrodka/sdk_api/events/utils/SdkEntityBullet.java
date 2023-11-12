@@ -265,7 +265,7 @@ public abstract class SdkEntityBullet extends EntityBase {
                         BlockBase.LEAVES.activate(level, xTile, yTile, zTile, level.getTileMeta(xTile, yTile, zTile));
                     }
                 }
-                if(SdkMap.aircraftammoList.contains(this))
+                if(SdkMap.hitsoundList.contains(this)) //TODO: można by to jakoś REWRITE?
                 {
                     level.playSound(this, "ofensywa:bullethit", 1.0F, 1.2F / (rand.nextFloat() * 0.1F + 0.9F)); //oryginalna glosnosc 1.0
                 }else{
