@@ -19,4 +19,10 @@ public interface EntityBaseAccessor {
     @Invoker
     void invokeSetRotation(float f, float g);
 
+    @Accessor
+    int getField_1648();
+
+    @Accessor
+    void setFallDistance(float f);
+
 }

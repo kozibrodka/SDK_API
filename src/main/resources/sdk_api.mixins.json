@@ -6,6 +6,7 @@
   "mixins": [
     "BlockFireAccessor",
     "EntityBaseAccessor",
+    "EntityRendererAccessor",
     "GameRendererAccessor",
     "GameRendererMixin",
     "ItemBaseAccessor",

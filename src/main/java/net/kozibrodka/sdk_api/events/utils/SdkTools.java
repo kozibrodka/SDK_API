@@ -5,6 +5,7 @@ import net.kozibrodka.sdk_api.mixin.BlockFireAccessor;
 import net.kozibrodka.sdk_api.mixin.EntityBaseAccessor;
 import net.kozibrodka.sdk_api.mixin.LivingAccessor;
 import net.minecraft.block.BlockBase;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.util.ScreenScaler;
@@ -14,6 +15,7 @@ import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
+import net.minecraft.level.Level;
 import org.lwjgl.opengl.GL11;
 
 import java.lang.reflect.Method;
@@ -502,12 +504,12 @@ public class SdkTools {
 //
 //        return -1;
 //    }
-//
-//    public static boolean onGroundOrInWater(World world, Entity entity)
-//    {
-//        return entity.onGround || world.handleMaterialAcceleration(entity.boundingBox, Material.water, entity);
-//    }
-//
+
+    public static boolean onGroundOrInWater(Level world, EntityBase entity)
+    {
+        return entity.onGround || world.method_170(entity.boundingBox, Material.WATER, entity);
+    }
+
 //    public static void setUtilityArmour(ItemArmor itemarmor)
 //    {
 //        try

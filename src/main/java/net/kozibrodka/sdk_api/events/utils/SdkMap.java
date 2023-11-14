@@ -52,4 +52,19 @@ public class SdkMap {
      */
     public static List telescopeList = new LinkedList(); //Item
 
+    /**
+     * Scuba Tank
+     */
+    public static List scubaTankList = new LinkedList(); //Item.id
+
+    /**
+     * NightvisionGoogles
+     */
+    public static List nightvisionList = new LinkedList(); //Item.id
+
+    /**
+     * Parachute
+     */
+    public static List parachuteList = new LinkedList(); //Item.id
+
 }

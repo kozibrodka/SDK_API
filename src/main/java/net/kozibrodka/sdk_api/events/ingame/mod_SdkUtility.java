@@ -1,20 +1,55 @@
 package net.kozibrodka.sdk_api.events.ingame;
 
+import net.kozibrodka.sdk_api.events.init.KeyBindingListener;
+import net.kozibrodka.sdk_api.events.parachute.SdkEntityParachute;
 import net.kozibrodka.sdk_api.events.utils.SdkMap;
 import net.kozibrodka.sdk_api.events.utils.SdkTools;
+import net.kozibrodka.sdk_api.mixin.EntityBaseAccessor;
 import net.kozibrodka.sdk_api.mixin.GameRendererAccessor;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
+import net.minecraft.level.Level;
+import org.lwjgl.input.Keyboard;
 
 public class mod_SdkUtility {
+
     public boolean OnTickInGame(Minecraft minecraft)
     {
         if(minecraft.level != null && gameClock != minecraft.level.getLevelTime())
         {
             gameClock = minecraft.level.getLevelTime();
             handleZoom(minecraft);
+            OnTickInGameTick(minecraft);
         }
+        renderNightvisionOverlay(minecraft);
         renderScopeOverlay(minecraft);
+        return true;
+    }
+
+    public boolean OnTickInGameTick(Minecraft minecraft)
+    {
+        ItemInstance itemstack = minecraft.player.inventory.armour[2];
+        if(itemstack != null && SdkMap.scubaTankList.contains(itemstack.itemId))
+        {
+            minecraft.player.air = ((EntityBaseAccessor)minecraft.player).getField_1648(); //max air
+        }
+        ItemInstance itemstack1 = minecraft.player.inventory.armour[3];
+        if(itemstack1 == null || SdkMap.nightvisionList.contains(itemstack.itemId))
+        {
+            nightvisionEnabled = false;
+        }
+        handleZoom(minecraft);
+        if(minecraft.currentScreen == null && !Keyboard.isKeyDown(KeyBindingListener.keyBinding_parachute.key) && parachuteKeyDown)
+        {
+            handleParachuteKey(minecraft);
+        }
+        parachuteKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_parachute.key);
+        if(minecraft.currentScreen == null && !Keyboard.isKeyDown(KeyBindingListener.keyBinding_nightvision.key) && nightvisionKeyDown)
+        {
+            handleNightvisionKey();
+        }
+        nightvisionKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_nightvision.key);
         return true;
     }
 
@@ -22,7 +57,21 @@ public class mod_SdkUtility {
     {
         if(!minecraft.options.thirdPerson && currentZoom != 1.0F && minecraft.currentScreen == null)
         {
-            SdkTools.renderTextureOverlay("/assets/ofensywa/stationapi/textures/item/sdk/miscTelescope.png", 1.0F);
+            SdkTools.renderTextureOverlay("/assets/sdk_api/stationapi/textures/item/miscTelescope.png", 1.0F);
+        }
+    }
+
+    public static boolean nightvisionEnabled()
+    {
+        ItemInstance itemstack = SdkTools.minecraft.player.inventory.armour[3];
+        return itemstack != null && SdkMap.nightvisionList.contains(itemstack.itemId) && !SdkTools.minecraft.options.thirdPerson && SdkTools.minecraft.currentScreen == null && nightvisionEnabled;
+    }
+
+    private void renderNightvisionOverlay(Minecraft minecraft)
+    {
+        if(nightvisionEnabled())
+        {
+            SdkTools.renderTextureOverlay("/assets/sdk_api/stationapi/textures/item/miscNightvision.png", 1.0F);
         }
     }
 
@@ -60,6 +109,70 @@ public class mod_SdkUtility {
         lastZoom = currentZoom;
     }
 
+    public static void handleNightvisionKey()
+    {
+        nightvisionEnabled = !nightvisionEnabled;
+    }
+
+    public void handleParachuteKey(Minecraft minecraft)
+    {
+        ItemInstance itemstack = minecraft.player.inventory.armour[2];
+        if(itemstack != null && SdkMap.parachuteList.contains(itemstack.itemId))
+        {
+            useParachute(itemstack, minecraft.level, minecraft.player);
+        }
+    }
+
+    private void useParachute(ItemInstance itemstack, Level world, PlayerBase entityplayer)
+    {
+        if(!SdkTools.onGroundOrInWater(world, entityplayer))
+        {
+            itemstack.applyDamage(1, SdkTools.minecraft.player);
+            if(itemstack.count == 0)
+            {
+                boolean flag = false;
+                int i = 0;
+                do
+                {
+                    if(i >= entityplayer.inventory.armour.length)
+                    {
+                        break;
+                    }
+                    if(entityplayer.inventory.armour[i] == itemstack)
+                    {
+                        entityplayer.inventory.armour[i] = null;
+                        flag = true;
+                        break;
+                    }
+                    i++;
+                } while(true);
+                if(!flag)
+                {
+                    int j = 0;
+                    do
+                    {
+                        if(j >= entityplayer.inventory.main.length)
+                        {
+                            break;
+                        }
+                        if(entityplayer.inventory.main[j] == itemstack)
+                        {
+                            entityplayer.inventory.main[j] = null;
+                            boolean flag1 = true;
+                            break;
+                        }
+                        j++;
+                    } while(true);
+                }
+            }
+            world.playSound(entityplayer, "ofensywa.parachute", 0.5F, 1.0F / (SdkTools.random.nextFloat() * 0.1F + 0.95F));
+            if(!world.isServerSide)
+            { //TODO: Chuj wie...
+                world.spawnEntity(new SdkEntityParachute(world, entityplayer));
+            }
+        }
+    }
+
     public static void useZoom()
     {
         currentZoomIndex = (currentZoomIndex + 1) % MAX_ZOOMS.length;
@@ -81,4 +194,8 @@ public class mod_SdkUtility {
         currentZoom = 1.0F;
         lastZoom = currentZoom;
     }
+
+    private static boolean parachuteKeyDown = false;
+    private static boolean nightvisionKeyDown = false;
+    public static boolean nightvisionEnabled = false;
 }
