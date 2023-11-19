@@ -67,4 +67,9 @@ public class SdkMap {
      */
     public static List parachuteList = new LinkedList(); //Item.id
 
+    /**
+     * JetPack
+     */
+    public static List jetpackList = new LinkedList<Integer>(); //Item.id
+
 }

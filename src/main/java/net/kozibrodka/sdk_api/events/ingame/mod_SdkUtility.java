@@ -29,13 +29,13 @@ public class mod_SdkUtility {
 
     public boolean OnTickInGameTick(Minecraft minecraft)
     {
-        ItemInstance itemstack = minecraft.player.inventory.armour[2];
+        ItemInstance itemstack = minecraft.player.inventory.getArmourItem(2);
         if(itemstack != null && SdkMap.scubaTankList.contains(itemstack.itemId))
         {
             minecraft.player.air = ((EntityBaseAccessor)minecraft.player).getField_1648(); //max air
         }
-        ItemInstance itemstack1 = minecraft.player.inventory.armour[3];
-        if(itemstack1 == null || SdkMap.nightvisionList.contains(itemstack.itemId))
+        ItemInstance itemstack1 = minecraft.player.inventory.getArmourItem(3);
+        if(itemstack1 == null || !SdkMap.nightvisionList.contains(itemstack.itemId))
         {
             nightvisionEnabled = false;
         }
@@ -63,7 +63,7 @@ public class mod_SdkUtility {
 
     public static boolean nightvisionEnabled()
     {
-        ItemInstance itemstack = SdkTools.minecraft.player.inventory.armour[3];
+        ItemInstance itemstack = SdkTools.minecraft.player.inventory.getArmourItem(3);
         return itemstack != null && SdkMap.nightvisionList.contains(itemstack.itemId) && !SdkTools.minecraft.options.thirdPerson && SdkTools.minecraft.currentScreen == null && nightvisionEnabled;
     }
 
@@ -116,7 +116,7 @@ public class mod_SdkUtility {
 
     public void handleParachuteKey(Minecraft minecraft)
     {
-        ItemInstance itemstack = minecraft.player.inventory.armour[2];
+        ItemInstance itemstack = minecraft.player.inventory.getArmourItem(2);
         if(itemstack != null && SdkMap.parachuteList.contains(itemstack.itemId))
         {
             useParachute(itemstack, minecraft.level, minecraft.player);

@@ -14,6 +14,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.level.Level;
+import net.minecraft.util.maths.MathHelper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -72,7 +73,7 @@ public class mod_SdkGuns {
             handleAtvFireKey(minecraft, minecraft.player);
         }
         handleGuns(minecraft);
-//        setJetPack(handleJetPack(minecraft)); //jetpack wysyla modloader pakiety + to jest na poxnije
+        handleJetPack(minecraft);
         return true;
     }
 
@@ -262,6 +263,70 @@ public class mod_SdkGuns {
             {
                 entry.setValue(new Pair(i, ((Pair)entry.getValue()).getSecond()));
             }
+        }
+    }
+
+    public boolean handleJetPack(Minecraft minecraft)
+    {
+        ItemInstance itemstack = minecraft.player.inventory.getArmourItem(2);
+        if(minecraft.currentScreen == null && itemstack != null && SdkMap.jetpackList.contains(itemstack.itemId))
+        {
+            if(SdkTools.onGroundOrInWater(minecraft.level, minecraft.player) || minecraft.player.vehicle != null)
+            {
+                jetPackReady = false;
+            } else
+            if(!Keyboard.isKeyDown(minecraft.options.jumpKey.key))
+            {
+                jetPackReady = true;
+            } else
+            if(jetPackReady && useJetPackFuel(minecraft))
+            {
+                minecraft.player.velocityY = Math.min(minecraft.player.velocityY + 0.059999999999999998D + 0.059999999999999998D, 0.29999999999999999D);
+                ((EntityBaseAccessor)minecraft.player).setFallDistance(0.0F);
+                for(int i = 0; i < 16; i++)
+                {
+                    spawnJetPackParticle(minecraft, "flame");
+                    spawnJetPackParticle(minecraft, "smoke");
+                }
+
+                if(minecraft.level.getLevelTime() - jetPackLastSound < 0L)
+                {
+                    jetPackLastSound = minecraft.level.getLevelTime() - 15L;
+                }
+                if(jetPackLastSound == 0L || minecraft.level.getLevelTime() - jetPackLastSound > 15L)
+                {
+                    minecraft.level.playSound(minecraft.player, "sdk.jetpack", 0.25F, 1.0F / (SdkTools.random.nextFloat() * 0.1F + 0.95F));
+                    jetPackLastSound = minecraft.level.getLevelTime();
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void spawnJetPackParticle(Minecraft minecraft, String s)
+    {
+        spawnJetPackParticle(minecraft, s, 0.17499999999999999D, -0.90000000000000002D, -0.29999999999999999D);
+        spawnJetPackParticle(minecraft, s, -0.17499999999999999D, -0.90000000000000002D, -0.29999999999999999D);
+    }
+
+    public void spawnJetPackParticle(Minecraft minecraft, String s, double d, double d1, double d2)
+    {
+        float f = -(minecraft.player.field_1012 * 0.01745329F);
+        double d3 = d2 * (double) MathHelper.sin(f) + d * (double)MathHelper.cos(f);
+        double d4 = d2 * (double)MathHelper.cos(f) - d * (double)MathHelper.sin(f);
+        minecraft.level.addParticle(s, minecraft.player.x + d3, minecraft.player.y + d1, minecraft.player.z + d4, SdkTools.random.nextDouble() * 0.10000000000000001D - 0.050000000000000003D, ((SdkTools.random.nextDouble() * 0.10000000000000001D - 0.050000000000000003D) + minecraft.player.velocityY) - 0.5D, SdkTools.random.nextDouble() * 0.10000000000000001D - 0.050000000000000003D);
+    }
+
+    private boolean useJetPackFuel(Minecraft minecraft)
+    {
+        if(SdkTools.useItemInInventory(minecraft.player, (Integer) SdkMap.jetpackList.get(0)) > 0)
+        {
+//            setJetPack(true);
+            return true;
+        } else
+        {
+            return false;
         }
     }
 
