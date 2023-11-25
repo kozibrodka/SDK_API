@@ -8,6 +8,7 @@ import net.kozibrodka.sdk_api.mixin.EntityBaseAccessor;
 import net.kozibrodka.sdk_api.mixin.GameRendererAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.level.Level;
 import org.lwjgl.input.Keyboard;
@@ -35,7 +36,7 @@ public class mod_SdkUtility {
             minecraft.player.air = ((EntityBaseAccessor)minecraft.player).getField_1648(); //max air
         }
         ItemInstance itemstack1 = minecraft.player.inventory.getArmourItem(3);
-        if(itemstack1 == null || !SdkMap.nightvisionList.contains(itemstack.itemId))
+        if(itemstack1 == null || !SdkMap.nightvisionList.contains(itemstack1.itemId))
         {
             nightvisionEnabled = false;
         }
@@ -78,7 +79,7 @@ public class mod_SdkUtility {
     private void handleZoom(Minecraft minecraft)
     {
         ItemInstance itemstack = minecraft.player.inventory.getHeldItem();
-        if(itemstack == null || !SdkMap.telescopeList.contains(itemstack.getType()) || minecraft.player.inventory.selectedHotbarSlot != lastZoomSlot || minecraft.options.thirdPerson || minecraft.currentScreen != null)
+        if(itemstack == null || !SdkMap.telescopeList.contains(itemstack.getType().id) || minecraft.player.inventory.selectedHotbarSlot != lastZoomSlot || minecraft.options.thirdPerson || minecraft.currentScreen != null)
         {
             currentZoomIndex = 0;
         }

@@ -320,7 +320,7 @@ public class mod_SdkGuns {
 
     private boolean useJetPackFuel(Minecraft minecraft)
     {
-        if(SdkTools.useItemInInventory(minecraft.player, (Integer) SdkMap.jetpackList.get(0)) > 0)
+        if(SdkTools.useItemInInventory(minecraft.player, (Integer) SdkMap.oilList.get(0)) > 0)
         {
 //            setJetPack(true);
             return true;

@@ -50,7 +50,7 @@ public class SdkMap {
     /**
      * Telescopes - HUGE scope
      */
-    public static List telescopeList = new LinkedList(); //Item
+    public static List telescopeList = new LinkedList(); //Item.id
 
     /**
      * Scuba Tank
@@ -71,5 +71,10 @@ public class SdkMap {
      * JetPack
      */
     public static List jetpackList = new LinkedList<Integer>(); //Item.id
+
+    /**
+     * OilFuel
+     */
+    public static List oilList = new LinkedList<Integer>(); //Item.id
 
 }
