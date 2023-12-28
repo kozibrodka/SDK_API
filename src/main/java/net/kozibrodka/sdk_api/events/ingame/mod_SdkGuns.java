@@ -209,7 +209,7 @@ public class mod_SdkGuns {
 
     public static void reload(Level world, PlayerBase entityplayer)
     {
-        world.playSound(entityplayer, "ofensywa:reload", 1.0F, 1.0F / (((EntityBaseAccessor)entityplayer).getRand().nextFloat() * 0.1F + 0.95F));
+        world.playSound(entityplayer, "sdk_api:reload", 1.0F, 1.0F / (((EntityBaseAccessor)entityplayer).getRand().nextFloat() * 0.1F + 0.95F));
         reloadTimes.put(entityplayer, Integer.valueOf(40));
     }
 
@@ -486,7 +486,7 @@ public class mod_SdkGuns {
     {
         if(getFlash(entityplayer) != 0.0F && SdkTools.minecraft.currentScreen == null)
         {
-            SdkTools.renderTextureOverlay("/assets/ofensywa/stationapi/textures/item/sdk/miscFlash.png", getFlash(entityplayer));
+            SdkTools.renderTextureOverlay("/assets/sdk_api/stationapi/textures/item/miscFlash.png", getFlash(entityplayer));
         }
     }
 
@@ -529,7 +529,7 @@ public class mod_SdkGuns {
     {
         if(!minecraft.options.thirdPerson && currentZoom != 1.0F && minecraft.currentScreen == null)
         {
-            SdkTools.renderTextureOverlay("/assets/ofensywa/stationapi/textures/item/sdk/miscScope.png", 1.0F);
+            SdkTools.renderTextureOverlay("/assets/sdk_api/stationapi/textures/item/miscScope.png", 1.0F);
         }
     }
 

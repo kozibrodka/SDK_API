@@ -1,5 +1,6 @@
 package net.kozibrodka.sdk_api.events.utils;
 
+import net.minecraft.item.ItemBase;
 import org.w3c.dom.UserDataHandler;
 
 import java.util.LinkedList;

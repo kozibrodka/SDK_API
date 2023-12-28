@@ -267,9 +267,9 @@ public abstract class SdkEntityBullet extends EntityBase {
                 }
                 if(SdkMap.hitsoundList.contains(this)) //TODO: można by to jakoś REWRITE?
                 {
-                    level.playSound(this, "ofensywa:bullethit", 1.0F, 1.2F / (rand.nextFloat() * 0.1F + 0.9F)); //oryginalna glosnosc 1.0
+                    level.playSound(this, "sdk_api:bullethit", 1.0F, 1.2F / (rand.nextFloat() * 0.1F + 0.9F)); //oryginalna glosnosc 1.0
                 }else{
-                    level.playSound(this, "ofensywa:impact", 0.8F, 1.0F / (rand.nextFloat() * 0.1F + 0.95F));  //oryginalna glosnosc 0.2
+                    level.playSound(this, "sdk_api:impact", 0.8F, 1.0F / (rand.nextFloat() * 0.1F + 0.95F));  //oryginalna glosnosc 0.2
                 }
                 remove();
             }

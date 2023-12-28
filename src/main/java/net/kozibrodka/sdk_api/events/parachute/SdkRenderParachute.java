@@ -21,7 +21,7 @@ public class SdkRenderParachute extends EntityRenderer
     @Override
     public void render(EntityBase entity, double d, double d1, double d2, float f, float f1) {
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)d, (float)d1 + 1, (float)d2);
+        GL11.glTranslatef((float)d, (float)d1 + 1.5F, (float)d2);
         bindTexture("/assets/sdk_api/stationapi/textures/block/mobParachute.png");
         GL11.glScalef(-1.0F, -1.0F, 1.0F);
         model.render(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F); //0.0625F
