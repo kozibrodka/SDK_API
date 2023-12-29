@@ -46,6 +46,7 @@ public abstract class SdkEntityBullet extends EntityBase {
         this(world);
         owner = entity;
         damage = sdkitemgun.damage;
+        penetration = sdkitemgun.penetration;
         float f5 = entity.yaw;
         float f6 = f5 * 0.01745329F;
         double d = f * MathHelper.cos(f6) - f2 * MathHelper.sin(f6);
@@ -231,7 +232,7 @@ public abstract class SdkEntityBullet extends EntityBase {
                     }
                     if (movingobjectposition.field_1989 instanceof Living) {
                         SdkTools.attackEntityIgnoreDelay((Living) movingobjectposition.field_1989, owner, l);
-                    } else {
+                    } else { //TODO: REWRITE uwzględniając POJAZDy
                         if(SdkMap.pojazdList.contains(movingobjectposition.field_1989))
                         {
                             movingobjectposition.field_1989.damage(this, l);
@@ -341,6 +342,7 @@ public abstract class SdkEntityBullet extends EntityBase {
     protected int timeInTile;
     protected int timeInAir;
     protected int damage;
+    protected int penetration;
     protected boolean serverSpawned;
     protected String firingSound;
     protected float soundRangeFactor;

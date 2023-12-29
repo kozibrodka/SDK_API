@@ -61,6 +61,7 @@ public class mod_SdkGuns {
         if(minecraft.currentScreen == null && !Keyboard.isKeyDown(KeyBindingListener.keyBinding_reload.key) && reloadKeyDown)
         {
             handleReload(minecraft.level, minecraft.player, false);
+            handleReloadKeyVehicle(minecraft, minecraft.player);
         }
         reloadKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_reload.key);
         if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_altinventory.key) && atvInventoryKeyDown)
@@ -71,6 +72,21 @@ public class mod_SdkGuns {
         if(minecraft.currentScreen == null && Keyboard.isKeyDown(KeyBindingListener.keyBinding_altfire.key))
         {
             handleAtvFireKey(minecraft, minecraft.player);
+        }
+        exitKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_exit.key);
+        if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_exit.key) && exitKeyDown)
+        {
+            handleExitKey(minecraft, minecraft.player);
+        }
+        rocketKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_rocket.key);
+        if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_rocket.key) && rocketKeyDown)
+        {
+            handleRocketKey(minecraft, minecraft.player);
+        }
+        bombKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_bomb.key);
+        if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_bomb.key) && bombKeyDown)
+        {
+            handleBombKey(minecraft, minecraft.player);
         }
         handleGuns(minecraft);
         handleJetPack(minecraft);
@@ -642,28 +658,19 @@ public class mod_SdkGuns {
 
     private void handleInventoryAtvKey(Minecraft minecraft, PlayerBase entityplayer)
     {
-        //TODO: INTERFACE of vehicle
         if(!minecraft.hasLevel())
         {
-//            if(minecraft.currentScreen instanceof SdkGuiAtv)
-//            {
-//                minecraft.openScreen(null);
-//            } else
-//            if(entityplayer.vehicle instanceof SdkEntityAtv)
-//            {
-//                minecraft.openScreen(new SdkGuiAtv(entityplayer.inventory, (SdkEntityAtv)entityplayer.vehicle));
-//            }
-
-//            if(minecraft.currentScreen instanceof GuiPlane)
-//            {
-//                minecraft.openScreen(null);
-//            } else
-//            if(entityplayer.vehicle instanceof EntityPlane)
-//            {
-//                minecraft.openScreen(new GuiPlane(entityplayer.inventory, (EntityPlane)entityplayer.vehicle));
-//            }
             if(entityplayer.vehicle instanceof SdkVehicle){
                 ((SdkVehicle)entityplayer.vehicle).inventoryAtvKey(minecraft, entityplayer);
+            }
+            if(entityplayer.vehicle instanceof WW2Plane){
+                ((WW2Plane)entityplayer.vehicle).inventoryKey(minecraft, entityplayer);
+            }
+            if(entityplayer.vehicle instanceof WW2Tank){
+                ((WW2Tank)entityplayer.vehicle).inventoryKey(minecraft, entityplayer);
+            }
+            if(entityplayer.vehicle instanceof WW2Truck){
+                ((WW2Truck)entityplayer.vehicle).inventoryKey(minecraft, entityplayer);
             }
 
         } else
@@ -672,22 +679,72 @@ public class mod_SdkGuns {
         }
     }
 
-    private void handleAtvFireKey(Minecraft minecraft, PlayerBase entityplayer)
+    private void handleAtvFireKey(Minecraft minecraft, PlayerBase entityplayer) //Fire Vehicle CKM/Plane CKM
     {
         if(!minecraft.hasLevel())
         {
-//            if(entityplayer.vehicle instanceof SdkEntityAtv)
-//            {
-//                ((SdkEntityAtv)entityplayer.vehicle).fireGuns();
-//            }
             if(entityplayer.vehicle instanceof SdkVehicle){
                 ((SdkVehicle)entityplayer.vehicle).altFireKey(entityplayer);
+            }
+            if(entityplayer.vehicle instanceof WW2Plane){
+                ((WW2Plane)entityplayer.vehicle).fireKey(entityplayer);
+            }
+            if(entityplayer.vehicle instanceof WW2Tank){
+                ((WW2Tank)entityplayer.vehicle).fireSecondaryKey(entityplayer);
             }
         } else
         {
 //            ModLoaderMp.SendKey(this, 1); //packet
         }
     }
+    private void handleBombKey(Minecraft minecraft, PlayerBase entityplayer){ //Fire Vehicle Shell/Plane Bomb
+        if(!minecraft.hasLevel())
+        {
+            if(entityplayer.vehicle instanceof WW2Plane){
+                ((WW2Plane)entityplayer.vehicle).bombKey(entityplayer);
+            }
+            if(entityplayer.vehicle instanceof WW2Tank){
+                ((WW2Tank)entityplayer.vehicle).firePrimaryKey(entityplayer);
+            }
+        } else
+        {
+
+        }
+    }
+
+    private void handleExitKey(Minecraft minecraft, PlayerBase entityplayer){ //Vehicle Exit
+        if(entityplayer.vehicle instanceof WW2Plane){
+            ((WW2Plane)entityplayer.vehicle).exitKey(entityplayer);
+        }
+        if(entityplayer.vehicle instanceof WW2Tank){
+            ((WW2Tank)entityplayer.vehicle).exitKey(entityplayer);
+        }
+        if(entityplayer.vehicle instanceof WW2Truck){
+            ((WW2Truck)entityplayer.vehicle).exitKey(entityplayer);
+        }
+        if(entityplayer.vehicle instanceof WW2Cannon){
+            ((WW2Cannon)entityplayer.vehicle).exitKey(entityplayer);
+        }
+    }
+
+    private void handleRocketKey(Minecraft minecraft, PlayerBase entityplayer){// Plane Rocket/ Vehicle Tow
+        if(entityplayer.vehicle instanceof WW2Plane){
+            ((WW2Plane)entityplayer.vehicle).rocketKey(entityplayer);
+        }
+        if(entityplayer.vehicle instanceof WW2Tank){
+            ((WW2Tank)entityplayer.vehicle).towKey(entityplayer);
+        }
+    }
+
+    private void handleReloadKeyVehicle(Minecraft minecraft, PlayerBase entityplayer){
+        if(entityplayer.vehicle instanceof WW2Plane){
+            ((WW2Plane)entityplayer.vehicle).reloadKey(entityplayer);
+        }
+        if(entityplayer.vehicle instanceof WW2Tank){
+            ((WW2Tank)entityplayer.vehicle).reloadKey(entityplayer);
+        }
+    }
+
 
     private static void toggleZoomEnabled()
     {
@@ -750,6 +807,9 @@ public class mod_SdkGuns {
     public static boolean zoomKeyDown = false;
     public static boolean reloadKeyDown = false;
     public static boolean atvInventoryKeyDown = false;
+    public static boolean exitKeyDown = false;
+    public static boolean rocketKeyDown = false;
+    public static boolean bombKeyDown = false;
     public static Map burstShots = new HashMap();
     private Method minecraft_clickMouse;
     private Field minecraft_aa;
