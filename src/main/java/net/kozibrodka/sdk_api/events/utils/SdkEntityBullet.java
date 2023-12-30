@@ -342,7 +342,7 @@ public abstract class SdkEntityBullet extends EntityBase {
     protected int timeInTile;
     protected int timeInAir;
     protected int damage;
-    protected int penetration;
+    public int penetration;
     protected boolean serverSpawned;
     protected String firingSound;
     protected float soundRangeFactor;

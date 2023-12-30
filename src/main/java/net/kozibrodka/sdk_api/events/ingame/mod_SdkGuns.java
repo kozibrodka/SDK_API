@@ -713,35 +713,41 @@ public class mod_SdkGuns {
     }
 
     private void handleExitKey(Minecraft minecraft, PlayerBase entityplayer){ //Vehicle Exit
-        if(entityplayer.vehicle instanceof WW2Plane){
-            ((WW2Plane)entityplayer.vehicle).exitKey(entityplayer);
-        }
-        if(entityplayer.vehicle instanceof WW2Tank){
-            ((WW2Tank)entityplayer.vehicle).exitKey(entityplayer);
-        }
-        if(entityplayer.vehicle instanceof WW2Truck){
-            ((WW2Truck)entityplayer.vehicle).exitKey(entityplayer);
-        }
-        if(entityplayer.vehicle instanceof WW2Cannon){
-            ((WW2Cannon)entityplayer.vehicle).exitKey(entityplayer);
+        if(!minecraft.hasLevel()) {
+            if (entityplayer.vehicle instanceof WW2Plane) {
+                ((WW2Plane) entityplayer.vehicle).exitKey(entityplayer);
+            }
+            if (entityplayer.vehicle instanceof WW2Tank) {
+                ((WW2Tank) entityplayer.vehicle).exitKey(entityplayer);
+            }
+            if (entityplayer.vehicle instanceof WW2Truck) {
+                ((WW2Truck) entityplayer.vehicle).exitKey(entityplayer);
+            }
+            if (entityplayer.vehicle instanceof WW2Cannon) {
+                ((WW2Cannon) entityplayer.vehicle).exitKey(entityplayer);
+            }
         }
     }
 
     private void handleRocketKey(Minecraft minecraft, PlayerBase entityplayer){// Plane Rocket/ Vehicle Tow
-        if(entityplayer.vehicle instanceof WW2Plane){
-            ((WW2Plane)entityplayer.vehicle).rocketKey(entityplayer);
-        }
-        if(entityplayer.vehicle instanceof WW2Tank){
-            ((WW2Tank)entityplayer.vehicle).towKey(entityplayer);
+        if(!minecraft.hasLevel()) {
+            if (entityplayer.vehicle instanceof WW2Plane) {
+                ((WW2Plane) entityplayer.vehicle).rocketKey(entityplayer);
+            }
+            if (entityplayer.vehicle instanceof WW2Tank) {
+                ((WW2Tank) entityplayer.vehicle).towKey(entityplayer);
+            }
         }
     }
 
     private void handleReloadKeyVehicle(Minecraft minecraft, PlayerBase entityplayer){
-        if(entityplayer.vehicle instanceof WW2Plane){
-            ((WW2Plane)entityplayer.vehicle).reloadKey(entityplayer);
-        }
-        if(entityplayer.vehicle instanceof WW2Tank){
-            ((WW2Tank)entityplayer.vehicle).reloadKey(entityplayer);
+        if(!minecraft.hasLevel()) {
+            if (entityplayer.vehicle instanceof WW2Plane) {
+                ((WW2Plane) entityplayer.vehicle).reloadKey(entityplayer);
+            }
+            if (entityplayer.vehicle instanceof WW2Tank) {
+                ((WW2Tank) entityplayer.vehicle).reloadKey(entityplayer);
+            }
         }
     }
 

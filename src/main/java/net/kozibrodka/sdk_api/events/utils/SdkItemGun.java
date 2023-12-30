@@ -53,7 +53,7 @@ public abstract class SdkItemGun extends SdkItemCustomUseDelay {
             } else
             if(entity.passenger != null && (entity.passenger instanceof PlayerBase))
             {
-                if(!(SdkMap.pojazdList.contains(entity))) { //addon
+                if(!(entity instanceof WW2Cannon || entity instanceof WW2Plane || entity instanceof WW2Tank)) { //addon
                     i = SdkTools.useItemInInventory((PlayerBase) entity.passenger, requiredBullet.id);
                 }else{
                     i = 1;

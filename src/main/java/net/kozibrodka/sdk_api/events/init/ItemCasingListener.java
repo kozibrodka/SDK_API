@@ -27,8 +27,10 @@ public class ItemCasingListener {
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        itemBulletCasing = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemBulletCasing")).setTranslationKey(MOD_ID, "itemBulletCasing").setMaxStackSize(64);
-        itemBulletCasingShell = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemBulletCasingShell")).setTranslationKey(MOD_ID, "itemBulletCasingShell").setMaxStackSize(64);
+        if(FabricLoader.getInstance().isModLoaded("sdk")) {
+            itemBulletCasing = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemBulletCasing")).setTranslationKey(MOD_ID, "itemBulletCasing").setMaxStackSize(64);
+            itemBulletCasingShell = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemBulletCasingShell")).setTranslationKey(MOD_ID, "itemBulletCasingShell").setMaxStackSize(64);
+        }
         itemWrenchGold = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemWrenchGold")).setTranslationKey(MOD_ID, "itemWrenchGold").setMaxStackSize(1);
     }
 
