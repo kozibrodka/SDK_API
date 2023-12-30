@@ -24,7 +24,8 @@
     "stationapi:event_bus_client": [
       "net.kozibrodka.sdk_api.events.init.KeyBindingListener",
       "net.kozibrodka.sdk_api.events.ingame.KeyPressedListener",
-      "net.kozibrodka.sdk_api.events.init.ItemCasingListener"
+      "net.kozibrodka.sdk_api.events.init.ItemCasingListener",
+      "net.kozibrodka.sdk_api.events.init.ww2Parts"
     ],
     "stationapi:event_bus_server": [
     ]
