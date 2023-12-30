@@ -1,5 +1,6 @@
 package net.kozibrodka.sdk_api.events.init;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.kozibrodka.sdk_api.events.parachute.SdkEntityParachute;
 import net.kozibrodka.sdk_api.events.parachute.SdkRenderParachute;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -33,8 +34,10 @@ public class ItemCasingListener {
 
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
-        itemBulletCasing.setTexture(Identifier.of(MOD_ID, "item/itemBulletCasing"));
-        itemBulletCasingShell.setTexture(Identifier.of(MOD_ID, "item/itemBulletCasingShell"));
+        if(FabricLoader.getInstance().isModLoaded("sdk")) {
+            itemBulletCasing.setTexture(Identifier.of(MOD_ID, "item/itemBulletCasing"));
+            itemBulletCasingShell.setTexture(Identifier.of(MOD_ID, "item/itemBulletCasingShell"));
+        }
         itemWrenchGold.setTexture(Identifier.of(MOD_ID, "item/itemWrenchGold"));
     }
 
