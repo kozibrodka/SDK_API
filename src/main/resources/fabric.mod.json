@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "api_sdk",
+  "id": "sdk_api",
   "version": "${version}",
 
   "name": "SDK Api",
