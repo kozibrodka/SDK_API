@@ -311,7 +311,7 @@ public class mod_SdkGuns {
                 }
                 if(jetPackLastSound == 0L || minecraft.level.getLevelTime() - jetPackLastSound > 15L)
                 {
-                    minecraft.level.playSound(minecraft.player, "sdk.jetpack", 0.25F, 1.0F / (SdkTools.random.nextFloat() * 0.1F + 0.95F));
+                    minecraft.level.playSound(minecraft.player, "sdk:jetpack", 0.25F, 1.0F / (SdkTools.random.nextFloat() * 0.1F + 0.95F));
                     jetPackLastSound = minecraft.level.getLevelTime();
                 }
                 return true;
