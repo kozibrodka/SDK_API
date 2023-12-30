@@ -73,21 +73,21 @@ public class mod_SdkGuns {
         {
             handleAtvFireKey(minecraft, minecraft.player);
         }
-        exitKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_exit.key);
         if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_exit.key) && exitKeyDown)
         {
             handleExitKey(minecraft, minecraft.player);
         }
-        rocketKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_rocket.key);
+        exitKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_exit.key);
         if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_rocket.key) && rocketKeyDown)
         {
             handleRocketKey(minecraft, minecraft.player);
         }
-        bombKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_bomb.key);
+        rocketKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_rocket.key);
         if(!Keyboard.isKeyDown(KeyBindingListener.keyBinding_bomb.key) && bombKeyDown)
         {
             handleBombKey(minecraft, minecraft.player);
         }
+        bombKeyDown = Keyboard.isKeyDown(KeyBindingListener.keyBinding_bomb.key);
         handleGuns(minecraft);
         handleJetPack(minecraft);
         return true;
@@ -658,6 +658,7 @@ public class mod_SdkGuns {
 
     private void handleInventoryAtvKey(Minecraft minecraft, PlayerBase entityplayer)
     {
+        System.out.println("INVENT");
         if(!minecraft.hasLevel())
         {
             if(entityplayer.vehicle instanceof SdkVehicle){
