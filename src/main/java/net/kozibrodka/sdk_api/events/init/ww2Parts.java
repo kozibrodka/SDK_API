@@ -16,7 +16,7 @@ public class ww2Parts {
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        if(FabricLoader.getInstance().isModLoaded("planes")) {
+        if(FabricLoader.getInstance().isModLoaded("planes")) { //FabricLoader.getInstance().isModLoaded("planes")
             biplaneWing = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "biplaneWing")).setTranslationKey(MOD_ID, "biplaneWing").setMaxStackSize(8);
             woodenTail = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "woodenTail")).setTranslationKey(MOD_ID, "woodenTail").setMaxStackSize(4);
             woodenPropeller = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "woodenPropeller")).setTranslationKey(MOD_ID, "woodenPropeller").setMaxStackSize(4);
@@ -81,7 +81,7 @@ public class ww2Parts {
             wheel.setTexture(Identifier.of(MOD_ID, "item/Wheel"));
             machinegun.setTexture(Identifier.of(MOD_ID, "item/Machinegun"));
             metalWingMG.setTexture(Identifier.of(MOD_ID, "item/MetalWingMG"));
-            metalTail.setTexture(Identifier.of(MOD_ID, "item/metalTail"));
+            metalTail.setTexture(Identifier.of(MOD_ID, "item/MetalTail"));
             bombBay.setTexture(Identifier.of(MOD_ID, "item/BombBay"));
             metalNose.setTexture(Identifier.of(MOD_ID, "item/MetalNose"));
             metalWing.setTexture(Identifier.of(MOD_ID, "item/MetalWing"));
@@ -89,11 +89,11 @@ public class ww2Parts {
             advancedMetalCockpit.setTexture(Identifier.of(MOD_ID, "item/AdvancedMetalCockpit"));
             passengerBay.setTexture(Identifier.of(MOD_ID, "item/PassengerBay"));
             metalPropeller.setTexture(Identifier.of(MOD_ID, "item/MetalPropeller"));
-            metalWingpPropv4.setTexture(Identifier.of(MOD_ID, "item/MetalWingpPropv4"));
-            metalWingpPropv6.setTexture(Identifier.of(MOD_ID, "item/MetalWingpPropv6"));
-            metalWingpPropv8.setTexture(Identifier.of(MOD_ID, "item/MetalWingpPropv8"));
-            metalWingpPropRot.setTexture(Identifier.of(MOD_ID, "item/MetalWingpPropRot"));
-            vehicleSeat.setTexture(Identifier.of(MOD_ID, "item/VehicleSeat"));
+            metalWingpPropv4.setTexture(Identifier.of(MOD_ID, "item/MetalWingProp"));
+            metalWingpPropv6.setTexture(Identifier.of(MOD_ID, "item/MetalWingProp"));
+            metalWingpPropv8.setTexture(Identifier.of(MOD_ID, "item/MetalWingProp"));
+            metalWingpPropRot.setTexture(Identifier.of(MOD_ID, "item/MetalWingProp"));
+            vehicleSeat.setTexture(Identifier.of(MOD_ID, "item/vehicleseat"));
             symbolGerman.setTexture(Identifier.of(MOD_ID, "item/SymbolGerman"));
             symbolAmerican.setTexture(Identifier.of(MOD_ID, "item/SymbolAmerican"));
             symbolBritish.setTexture(Identifier.of(MOD_ID, "item/SymbolBritish"));
@@ -105,7 +105,7 @@ public class ww2Parts {
             mediumEngine.setTexture(Identifier.of(MOD_ID, "item/V6Engine"));
             largeEngine.setTexture(Identifier.of(MOD_ID, "item/V8Engine"));
             rotaryEngine.setTexture(Identifier.of(MOD_ID, "item/RotaryEngine"));
-            piston.setTexture(Identifier.of(MOD_ID, "item/Piston"));
+            piston.setTexture(Identifier.of(MOD_ID, "item/EnginePiston"));
 
 
         }
