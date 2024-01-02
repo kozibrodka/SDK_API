@@ -658,7 +658,6 @@ public class mod_SdkGuns {
 
     private void handleInventoryAtvKey(Minecraft minecraft, PlayerBase entityplayer)
     {
-        System.out.println("INVENT");
         if(!minecraft.hasLevel())
         {
             if(entityplayer.vehicle instanceof SdkVehicle){
