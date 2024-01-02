@@ -158,5 +158,12 @@ public abstract class SdkItemGun extends SdkItemCustomUseDelay {
     public float soundRangeFactor;
     protected long lastSound;
     protected long lastEmptySound;
+    /**
+     * penetration:
+     *  0 - no damage to vehicles
+     *  1 - damages cars, and undermentioned
+     *  2 - damages planes, and undermentioned
+     *  3 - damages tank, and undermentioned
+     */
     public int penetration;
 }

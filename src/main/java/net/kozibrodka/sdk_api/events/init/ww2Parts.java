@@ -24,7 +24,6 @@ public class ww2Parts {
             triplaneWing = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "triplaneWing")).setTranslationKey(MOD_ID, "triplaneWing").setMaxStackSize(8);
             woodenCockpit = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "woodenCockpit")).setTranslationKey(MOD_ID, "woodenCockpit").setMaxStackSize(4);
             wheel = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "wheel")).setTranslationKey(MOD_ID, "wheel").setMaxStackSize(12);
-            machinegun = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "machinegun")).setTranslationKey(MOD_ID, "machinegun").setMaxStackSize(8);
             metalWingMG = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "metalWingMG")).setTranslationKey(MOD_ID, "metalWingMG").setMaxStackSize(8);
             metalTail = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "metalTail")).setTranslationKey(MOD_ID, "metalTail").setMaxStackSize(4);
             bombBay = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "bombBay")).setTranslationKey(MOD_ID, "bombBay").setMaxStackSize(4);
@@ -46,6 +45,7 @@ public class ww2Parts {
             largeEngine = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "largeEngine")).setTranslationKey(MOD_ID, "largeEngine").setMaxStackSize(4);
             rotaryEngine = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "rotaryEngine")).setTranslationKey(MOD_ID, "rotaryEngine").setMaxStackSize(4);
             piston = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "piston")).setTranslationKey(MOD_ID, "piston").setMaxStackSize(16);
+            machinegun = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "machinegun")).setTranslationKey(MOD_ID, "machinegun").setMaxStackSize(8);
             symbolGerman = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "symbolGerman")).setTranslationKey(MOD_ID, "symbolGerman");
             symbolAmerican = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "symbolAmerican")).setTranslationKey(MOD_ID, "symbolAmerican");
             symbolBritish = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "symbolBritish")).setTranslationKey(MOD_ID, "symbolBritish");
@@ -80,7 +80,6 @@ public class ww2Parts {
             triplaneWing.setTexture(Identifier.of(MOD_ID, "item/TriplaneWing"));
             woodenCockpit.setTexture(Identifier.of(MOD_ID, "item/WoodenCockpit"));
             wheel.setTexture(Identifier.of(MOD_ID, "item/Wheel"));
-            machinegun.setTexture(Identifier.of(MOD_ID, "item/Machinegun"));
             metalWingMG.setTexture(Identifier.of(MOD_ID, "item/MetalWingMG"));
             metalTail.setTexture(Identifier.of(MOD_ID, "item/MetalTail"));
             bombBay.setTexture(Identifier.of(MOD_ID, "item/BombBay"));
@@ -95,10 +94,6 @@ public class ww2Parts {
             metalWingpPropv8.setTexture(Identifier.of(MOD_ID, "item/MetalWingProp"));
             metalWingpPropRot.setTexture(Identifier.of(MOD_ID, "item/MetalWingProp"));
             vehicleSeat.setTexture(Identifier.of(MOD_ID, "item/vehicleseat"));
-            symbolGerman.setTexture(Identifier.of(MOD_ID, "item/SymbolGerman"));
-            symbolAmerican.setTexture(Identifier.of(MOD_ID, "item/SymbolAmerican"));
-            symbolBritish.setTexture(Identifier.of(MOD_ID, "item/SymbolBritish"));
-            symbolRussian.setTexture(Identifier.of(MOD_ID, "item/SymbolRussian"));
         }
 
         if(FabricLoader.getInstance().isModLoaded("vehicles") || FabricLoader.getInstance().isModLoaded("planes")) {
@@ -107,11 +102,14 @@ public class ww2Parts {
             largeEngine.setTexture(Identifier.of(MOD_ID, "item/V8Engine"));
             rotaryEngine.setTexture(Identifier.of(MOD_ID, "item/RotaryEngine"));
             piston.setTexture(Identifier.of(MOD_ID, "item/EnginePiston"));
-
-
+            machinegun.setTexture(Identifier.of(MOD_ID, "item/Machinegun"));
+            symbolGerman.setTexture(Identifier.of(MOD_ID, "item/SymbolGerman"));
+            symbolAmerican.setTexture(Identifier.of(MOD_ID, "item/SymbolAmerican"));
+            symbolBritish.setTexture(Identifier.of(MOD_ID, "item/SymbolBritish"));
+            symbolRussian.setTexture(Identifier.of(MOD_ID, "item/SymbolRussian"));
         }
         if(FabricLoader.getInstance().isModLoaded("vehicles")) {
-            redstoneCoil.setTexture(Identifier.of(MOD_ID, "item/EedstoneCoil"));
+            redstoneCoil.setTexture(Identifier.of(MOD_ID, "item/RedstoneCoil"));
             denseredRedstoneCoil.setTexture(Identifier.of(MOD_ID, "item/DenseredRedstoneCoil"));
             largeWheel.setTexture(Identifier.of(MOD_ID, "item/LargeWheel"));
             smallCarChassis.setTexture(Identifier.of(MOD_ID, "item/SmallCarChassis"));
@@ -125,7 +123,7 @@ public class ww2Parts {
             mediumTankTurret.setTexture(Identifier.of(MOD_ID, "item/MediumTankTurret"));
             heavyTankTurret.setTexture(Identifier.of(MOD_ID, "item/HeavyTankTurret"));
             trackPiece.setTexture(Identifier.of(MOD_ID, "item/TrackPiece"));
-            towBar.setTexture(Identifier.of(MOD_ID, "item/TowBar"));
+            towBar.setTexture(Identifier.of(MOD_ID, "item/Towbar"));
             caterpillarTrack.setTexture(Identifier.of(MOD_ID, "item/CaterpillarTrack"));
         }
 

@@ -41,7 +41,7 @@ public class SdkMap {
      * Vehicles where players cannot use GUNS as PASSENGER
      */
     //TODO: LOGIC - coś tu nie gra, czy w ATV można strzelać???
-    public static List pojazdList = new LinkedList(); //Entity
+//    public static List pojazdList = new LinkedList(); //Entity
 
     /**
      * Bullets with custom hitsound - aircraft

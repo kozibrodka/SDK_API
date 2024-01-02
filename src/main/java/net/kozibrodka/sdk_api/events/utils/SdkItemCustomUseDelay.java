@@ -57,7 +57,7 @@ public abstract class SdkItemCustomUseDelay extends TemplateItemBase {
                                             float f4)
     {
         //
-        if(SdkMap.pojazdList.contains(entity.vehicle))
+        if(entity.vehicle instanceof WW2Plane || entity.vehicle instanceof WW2Tank || entity.vehicle instanceof WW2Cannon)
         {
             return itemstack;
         }

@@ -236,10 +236,21 @@ public abstract class SdkEntityBullet extends EntityBase {
                     }
                     if (movingobjectposition.field_1989 instanceof Living) {
                         SdkTools.attackEntityIgnoreDelay((Living) movingobjectposition.field_1989, owner, l);
-                    } else { //TODO: REWRITE uwzględniając POJAZDy
-                        if(SdkMap.pojazdList.contains(movingobjectposition.field_1989))
+                    } else {
+                        if(movingobjectposition.field_1989 instanceof WW2Plane || movingobjectposition.field_1989 instanceof WW2Tank || movingobjectposition.field_1989 instanceof WW2Truck || movingobjectposition.field_1989 instanceof WW2Cannon)
                         {
-                            movingobjectposition.field_1989.damage(this, l);
+                            if(movingobjectposition.field_1989 instanceof WW2Truck && penetration >= 1)
+                            {
+                                movingobjectposition.field_1989.damage(this, l);
+                            }
+                            if(movingobjectposition.field_1989 instanceof WW2Plane && penetration >= 2)
+                            {
+                                movingobjectposition.field_1989.damage(this, l);
+                            }
+                            if((movingobjectposition.field_1989 instanceof WW2Tank && penetration >= 3) || (movingobjectposition.field_1989 instanceof WW2Cannon && penetration >= 3))
+                            {
+                                movingobjectposition.field_1989.damage(this, l);
+                            }
                         }else {
                             movingobjectposition.field_1989.damage(owner, l);
                         }
