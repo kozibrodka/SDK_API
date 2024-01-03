@@ -5,14 +5,14 @@ import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.level.Level;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class SdkItemCustomUseDelay extends TemplateItemBase {
+public abstract class SdkItemCustomUseDelay extends TemplateItem {
 
     public SdkItemCustomUseDelay(Identifier i)
     {

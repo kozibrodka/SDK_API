@@ -14,28 +14,30 @@ import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.EntityHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.registry.Registry;
-import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.modificationstation.stationapi.api.util.Null;
+
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.Namespace;
+import net.modificationstation.stationapi.api.util.Null;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
 
 public class ItemCasingListener {
 
-    @Entrypoint.ModID
-    public static final ModID MOD_ID = Null.get();
+    @Entrypoint.Namespace
+    public static final Namespace MOD_ID = Null.get();
 
-    public static TemplateItemBase itemBulletCasing;
-    public static TemplateItemBase itemBulletCasingShell;
-    public static TemplateItemBase itemWrenchGold;
+    public static TemplateItem itemBulletCasing;
+    public static TemplateItem itemBulletCasingShell;
+    public static TemplateItem itemWrenchGold;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
         if(FabricLoader.getInstance().isModLoaded("sdk")) {
-            itemBulletCasing = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemBulletCasing")).setTranslationKey(MOD_ID, "itemBulletCasing").setMaxStackSize(64);
-            itemBulletCasingShell = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemBulletCasingShell")).setTranslationKey(MOD_ID, "itemBulletCasingShell").setMaxStackSize(64);
+            itemBulletCasing = (TemplateItem) new TemplateItem(Identifier.of(MOD_ID, "itemBulletCasing")).setTranslationKey(MOD_ID, "itemBulletCasing").setMaxStackSize(64);
+            itemBulletCasingShell = (TemplateItem) new TemplateItem(Identifier.of(MOD_ID, "itemBulletCasingShell")).setTranslationKey(MOD_ID, "itemBulletCasingShell").setMaxStackSize(64);
         }
-        itemWrenchGold = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "itemWrenchGold")).setTranslationKey(MOD_ID, "itemWrenchGold").setMaxStackSize(1);
+        itemWrenchGold = (TemplateItem) new TemplateItem(Identifier.of(MOD_ID, "itemWrenchGold")).setTranslationKey(MOD_ID, "itemWrenchGold").setMaxStackSize(1);
     }
 
     @EventListener
