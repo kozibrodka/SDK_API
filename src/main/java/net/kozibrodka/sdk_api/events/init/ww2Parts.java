@@ -17,7 +17,7 @@ public class ww2Parts {
 
     @EventListener(priority = ListenerPriority.HIGHEST)
     public void registerItems(ItemRegistryEvent event) {
-        if(FabricLoader.getInstance().isModLoaded("vlanes")) { //FabricLoader.getInstance().isModLoaded("planes")
+        if(FabricLoader.getInstance().isModLoaded("planes")) { //FabricLoader.getInstance().isModLoaded("planes")
             biplaneWing = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "biplaneWing")).setTranslationKey(MOD_ID, "biplaneWing").setMaxStackSize(8);
             woodenTail = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "woodenTail")).setTranslationKey(MOD_ID, "woodenTail").setMaxStackSize(4);
             woodenPropeller = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "woodenPropeller")).setTranslationKey(MOD_ID, "woodenPropeller").setMaxStackSize(4);
@@ -39,7 +39,7 @@ public class ww2Parts {
             metalWingpPropRot = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "metalWingpPropRot")).setTranslationKey(MOD_ID, "metalWingpPropRot").setMaxStackSize(8);
             vehicleSeat = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "vehicleSeat")).setTranslationKey(MOD_ID, "vehicleSeat").setMaxStackSize(8);
         }
-        if(FabricLoader.getInstance().isModLoaded("vehicles") || FabricLoader.getInstance().isModLoaded("vlanes")) {
+        if(FabricLoader.getInstance().isModLoaded("vehicles") || FabricLoader.getInstance().isModLoaded("planes")) {
             smallEngine = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "smallEngine")).setTranslationKey(MOD_ID, "smallEngine").setMaxStackSize(4);
             mediumEngine = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "mediumEngine")).setTranslationKey(MOD_ID, "mediumEngine").setMaxStackSize(4);
             largeEngine = (TemplateItemBase) new TemplateItemBase(Identifier.of(MOD_ID, "largeEngine")).setTranslationKey(MOD_ID, "largeEngine").setMaxStackSize(4);
@@ -73,7 +73,7 @@ public class ww2Parts {
 
     @EventListener(priority = ListenerPriority.HIGHEST)
     public void registerTextures(TextureRegisterEvent event) {
-        if(FabricLoader.getInstance().isModLoaded("vlanes")) {
+        if(FabricLoader.getInstance().isModLoaded("planes")) {
             biplaneWing.setTexture(Identifier.of(MOD_ID, "item/BiplaneWing"));
             woodenTail.setTexture(Identifier.of(MOD_ID, "item/WoodenTail"));
             woodenPropeller.setTexture(Identifier.of(MOD_ID, "item/WoodenPropeller"));
@@ -96,7 +96,7 @@ public class ww2Parts {
             vehicleSeat.setTexture(Identifier.of(MOD_ID, "item/vehicleseat"));
         }
 
-        if(FabricLoader.getInstance().isModLoaded("vehicles") || FabricLoader.getInstance().isModLoaded("vlanes")) {
+        if(FabricLoader.getInstance().isModLoaded("vehicles") || FabricLoader.getInstance().isModLoaded("planes")) {
             smallEngine.setTexture(Identifier.of(MOD_ID, "item/V4Engine"));
             mediumEngine.setTexture(Identifier.of(MOD_ID, "item/V6Engine"));
             largeEngine.setTexture(Identifier.of(MOD_ID, "item/V8Engine"));
