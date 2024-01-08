@@ -726,6 +726,9 @@ public class mod_SdkGuns {
             if (entityplayer.vehicle instanceof WW2Cannon) {
                 ((WW2Cannon) entityplayer.vehicle).exitKey(entityplayer);
             }
+            if (entityplayer.vehicle instanceof SdkVehicle) {
+                ((SdkVehicle) entityplayer.vehicle).exitKey(entityplayer);
+            }
         }
     }
 

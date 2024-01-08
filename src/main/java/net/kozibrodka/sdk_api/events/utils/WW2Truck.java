@@ -9,4 +9,6 @@ public interface WW2Truck {
     void exitKey(PlayerBase entityplayer);
 
     void towKey(PlayerBase entityplayer);
+
+    int getPercentHealth();
 }

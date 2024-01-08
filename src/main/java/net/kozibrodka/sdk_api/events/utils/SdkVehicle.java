@@ -9,4 +9,6 @@ public interface SdkVehicle {
 
     void inventoryAtvKey(Minecraft minecraft, PlayerBase entityplayer);
 
+    void exitKey(PlayerBase entityplayer);
+
 }

@@ -17,4 +17,6 @@ public interface WW2Tank {
 
     void reloadKey(PlayerBase entityplayer);
 
+    int getPercentHealth();
+
 }

@@ -4,4 +4,6 @@ import net.minecraft.entity.player.PlayerBase;
 
 public interface WW2Cannon {
     void exitKey(PlayerBase entityplayer);
+
+    int getPercentHealth();
 }

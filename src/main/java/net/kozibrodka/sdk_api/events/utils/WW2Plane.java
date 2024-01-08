@@ -16,4 +16,6 @@ public interface WW2Plane {
     void rocketKey(PlayerBase entityplayer);
 
     void reloadKey(PlayerBase entityplayer);
+
+    int getPercentHealth();
 }
